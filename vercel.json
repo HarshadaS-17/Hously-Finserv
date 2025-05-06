@@ -2,19 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/**",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
-    {
-      "src": "/(.*\\.js|.*\\.css|.*\\.woff2|.*\\.png|.*\\.jpg|.*\\.svg)",
-      "dest": "/$1"
-    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
   ],
-  "installCommand": "npm install"
+  "installCommand": "npm rebuild && npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
